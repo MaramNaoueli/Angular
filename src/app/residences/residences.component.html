@@ -1,0 +1,28 @@
+<p>residences works!</p>
+
+<input type="text" placeholder="chercher par des address" [(ngModel)]="search_item">
+<table class="table table-striped">
+
+    <tr> 
+    <th>image</th>
+    <th>name</th>
+    <th>status</th>
+    <th>location</th>
+    <th>favoris</th>
+    </tr>
+
+    <tr *ngFor="let item of listResidences">
+    <td><img [src]="item.image" alt="{{item.name}}" width
+    ="100px"></td>
+    <td>{{item.name}}</td>
+    <td *ngIf="item.status==='Disponible'" style="color: rgb(29, 109, 152);"> {{item.status}}></td>
+    <td *ngIf="item.status==='Vendu'" style="color:blueviolet;" >{{item.status}}></td>
+    <td *ngIf="item.status==='En Construction'" style="color:brown;" >{{item.status}}></td>
+
+    <td><button type="button" class="btn btn-primary" (click)="showLocation(item.address)">show location</button> </td>
+
+    <td><button type="button" class="btn btn-danger" (click)="addFavoris(item)">like</button> </td>
+</table>
+<ul *ngFor="let favorite of favoris">
+    <li>{{favorite.id}} {{favorite.name}} </li>
+    </ul>
